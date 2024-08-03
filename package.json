@@ -19,6 +19,7 @@
         "vue": "^3.3.13"
     },
     "dependencies": {
-        "@heroicons/vue": "^2.1.5"
+        "@heroicons/vue": "^2.1.5",
+        "date-fns": "^3.6.0"
     }
 }
