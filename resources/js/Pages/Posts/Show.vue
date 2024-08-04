@@ -32,7 +32,7 @@ const formattedDate = computed(() => relativeDate(props.post.created_at));
                     </li>
                 </ul>
 
-                <Pagination :meta="comments.meta" :preserve-scroll="true" />
+                <Pagination :meta="comments.meta" :only="['comments']" :preserve-scroll="true" />
             </div>
         </Container>
     </AppLayout>
