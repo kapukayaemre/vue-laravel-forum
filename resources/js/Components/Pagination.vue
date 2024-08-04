@@ -32,6 +32,7 @@
                                 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0': !link.active
                           }"
                           v-html="link.label"
+                          :preserve-scroll="preserveScroll"
                     />
                 </nav>
             </div>
@@ -43,7 +44,7 @@
 import { Link } from "@inertiajs/vue3";
 import {computed} from "vue";
 
-const props = defineProps(['meta']);
+const props = defineProps(['meta', 'preserveScroll']);
 
 const previousUrl = computed(() => props.meta.links[0].url);
 const nextUrl = computed(() => [...props.meta.links].reverse()[0].url);
