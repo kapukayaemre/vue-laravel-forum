@@ -52,6 +52,6 @@ it('requires a valid body', function ($value) {
     1,
     1.5,
     true,
-    str_repeat('a', 256)
+    str_repeat('a', 2501)
 ]);
 
