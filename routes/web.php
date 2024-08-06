@@ -27,8 +27,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             return Inertia::render('Dashboard');
         })->name('dashboard');
 
-    Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('posts.comments.store');
+    Route::resource('posts.comments', CommentController::class)->shallow()->only(['store', 'update', 'destroy']);
+    // shallow ile sadece commenti parametre alanlarda posts prefixini kaldırdık.
+
+    /*Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('posts.comments.store');
     Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::put('comments/{comment}', [CommentController::class, 'update'])->name('comments.update');*/
 
 });
 
