@@ -30,7 +30,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::resource('posts.comments', CommentController::class)->shallow()->only(['store', 'update', 'destroy']);
     // shallow ile sadece commenti dependency injection ile alanlarda posts prefixini kaldırdık.
 
-    Route::resource('posts', PostController::class)->only(['store']);
+    Route::resource('posts', PostController::class)->only(['create', 'store']);
 
 });
 
