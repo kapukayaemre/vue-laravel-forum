@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class PostController extends Controller
@@ -51,14 +52,18 @@ class PostController extends Controller
             'user_id' => $request->user()->id
         ]);
 
-        return to_route('posts.show', $post->id);
+        return redirect($post->showRoute());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Request $request, Post $post)
     {
+        if (! Str::contains($post->showRoute(), $request->path())) {
+            return redirect($post->showRoute($request->query()), status: 301);
+        }
+
         $post->load('user');
 
         return Inertia::render('Posts/Show', [
