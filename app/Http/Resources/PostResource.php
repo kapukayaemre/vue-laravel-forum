@@ -19,9 +19,10 @@ class PostResource extends JsonResource
             'user'       => $this->whenLoaded('user', fn() => UserResource::make($this->user)), // $this User modeli ve user relationından çekiyor
             'title'      => $this->title,
             'body'       => $this->body,
+            'html'       => $this->html,
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
-            'routes' => [
+            'routes'     => [
                 'show' => $this->showRoute()
             ]
         ];

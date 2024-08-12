@@ -14,6 +14,7 @@ use Inertia\Inertia;
 class PostController extends Controller
 {
     use AuthorizesRequests;
+
     public function __construct()
     {
         $this->authorizeResource(Post::class);
@@ -43,8 +44,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'title'   => 'required|min:10|max:120|string',
-            'body'    => 'required|min:100|max:10000|string'
+            'title' => 'required|min:10|max:120|string',
+            'body'  => 'required|min:100|max:10000|string'
         ]);
 
         $post = Post::create([
@@ -60,7 +61,7 @@ class PostController extends Controller
      */
     public function show(Request $request, Post $post)
     {
-        if (! Str::contains($post->showRoute(), $request->path())) {
+        if (!Str::contains($post->showRoute(), $request->path())) {
             return redirect($post->showRoute($request->query()), status: 301);
         }
 
